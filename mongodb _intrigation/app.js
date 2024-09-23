@@ -29,7 +29,7 @@ app.get("/create", async (req, res) => {
   res.send(users);
  })
 
-//  read all the uusers ***********************************************
+//  read all the users ***********************************************
   app.get("/read", async (req,res)=>{
    let users= await usermodel.find()
      
@@ -39,7 +39,7 @@ app.get("/create", async (req, res) => {
 
   // read One user ******************************************************
   app.get("/readOne", async (req,res)=>{
-    let users= await usermodel.find({userName: "poornima"})
+    let users= await usermodel.findOne({userName: "poornima"})
       
     res.send(users)
  
