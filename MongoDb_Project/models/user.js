@@ -1,11 +1,11 @@
-const mongoose = requier('mongoose')
+const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/project')
+mongoose.connect("mongodb+srv://ashish9039062705:JULCBp1EGQfiBsDk@cluster0.hqot9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
-const userSchema =  mongoose.Schema({
-    name: String,
-    email: String,
-    Image: String
-})
+const userSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  image: String,
+});
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model("user", userSchema);
