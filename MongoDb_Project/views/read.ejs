@@ -13,7 +13,7 @@
         <a class="text-blue-500" href="/">Back to Home </a>
         <h1 class=" text-3xl mt-10 tracking-tighter mb-3 ">All Users </h1>
         <div class="users flex flex-wrap gap-3">
-            <% if(users.lenght > 0){%>
+
 
                 <%  users.forEach( (user)=>{%>
               
@@ -22,9 +22,9 @@
                             <img  class="w-full h-full object-center ob " src="<%= user.image %>" alt="">
                         </div>
                         <h3 class="text-xl tracking-tighter mt-3 "> <%= user.name %> </h3>
-                        <h5 class="text-zinc-500"><%= user.email %></h5>
+                        <h5 class="text-zinc-500"><%= user.email %> </h5>
                         <div class="flex gap-3 mt-10">
-                            <a href="" class="text-zinc-200">Edit user</a>
+                            <a href="/edit/<%=user._id%>" class="text-zinc-200">Edit user</a>
                                 
                             <a href="/delete/<%=user._id%>" class="text-red-500 ">Delete User</a>
                         </div>
@@ -33,9 +33,7 @@
     
               <%  } )%>
  
-            <%} else {%>
-                <h3 class="text-zinc-400 font-bold "> No Users Yet </h3>
-            <%} %>
+     -->
 
     
      

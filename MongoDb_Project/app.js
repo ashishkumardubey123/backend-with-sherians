@@ -24,10 +24,30 @@ app.set('view engine', 'ejs');
      
     let allUsers = await userModel.find()
      
+    // console.log(allUsers)
+     
     res.render('read' , {users: allUsers})
      
 })
  
+
+app.get('/edit/:id' , async (req, res)=>{
+     
+       
+  let user =    await userModel.findOne({_id:req.params.id})
+   res.render("edit", {user})
+     
+})
+
+app.post('/update/:id' , async (req, res)=>{
+      
+        const {email, image, name}= req.body
+       
+    let user =    await userModel.findOneAndUpdate({_id:req.params.id}, {image, name, email}, {new: true})
+     res.redirect("/read")
+       
+  })
+
 app.post('/create' , async (req, res)=>{
      
      const {name, email, image} = req.body
@@ -44,7 +64,7 @@ app.post('/create' , async (req, res)=>{
  
 app.get('/delete/:id' , async (req, res)=>{
      
-    let allUsers = await userModel.findOneAndDelete({_id: req.params.id})
+    await userModel.findOneAndDelete({_id: req.params.id})
      
     res.redirect('/read' )
      
