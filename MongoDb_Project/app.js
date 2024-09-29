@@ -42,7 +42,7 @@ app.get('/edit/:id' , async (req, res)=>{
 app.post('/update/:id' , async (req, res)=>{
       
         const {email, image, name}= req.body
-       
+        
     let user =    await userModel.findOneAndUpdate({_id:req.params.id}, {image, name, email}, {new: true})
      res.redirect("/read")
        
