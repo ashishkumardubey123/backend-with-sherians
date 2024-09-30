@@ -1,3 +1,0 @@
-password is = ashishKaPassword
-
-dcrypted password is=  $2b$10$nXWFID2ltoxHGtGPewkf8uRrKWVHo3o3vnvQYfBp0446UT7cBtIp2
