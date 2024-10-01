@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-black">
+  <div class="max-w-md w-full bg-gray-800 rounded-lg shadow-lg p-6 space-y-6 text-white">
+    
+    <!-- Cool Image -->
+    <div class="flex justify-center">
+     <img
+       src="<%=profileImage%>"
+       alt="Random User Profile Image"
+       class="w-24 h-24 rounded-full border-4 border-indigo-500"
+     >
+   </div>
+    <!-- User Info -->
+    <h1 class="text-3xl font-bold text-center">User Profile</h1>
+    
+    <div class="space-y-4 text-center">
+      <!-- User Name -->
+      <div>
+        <p class="text-lg font-semibold text-gray-300">Name:</p>
+        <p class="text-xl font-bold"><%=newUser.username%></p>
+      </div>
+
+      <!-- User Email -->
+      <div>
+        <p class="text-lg font-semibold text-gray-300">Email:</p>
+        <p class="text-xl font-bold"><%=newUser.email%> </p>
+      </div>
+
+      <!-- User Age -->
+      <div>
+        <p class="text-lg font-semibold text-gray-300">Age:</p>
+        <p class="text-xl font-bold"><%=newUser.age%></p>
+      </div>
+    </div>
+
+    <!-- Back to Dashboard Button -->
+    <div class="text-center mt-6">
+      <a href="/login" class="inline-block px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-full shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out">
+        Back to Dashboard
+      </a>
+    </div>
+  </div>
+</body>
+</html>
