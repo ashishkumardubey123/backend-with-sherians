@@ -1,4 +1,5 @@
 const mongoose =  require('mongoose')
+const post = require("./post");
 
 mongoose.connect("mongodb+srv://ashish9039062705:s4YLItm4V3tNaheC@cluster0.hqot9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
@@ -9,7 +10,7 @@ mongoose.connect("mongodb+srv://ashish9039062705:s4YLItm4V3tNaheC@cluster0.hqot9
     password: String,
     post: [{
      type: mongoose.Schema.Types.ObjectId,
-     ref: 'Post'
+     ref: 'post'
    }]
  })
    
