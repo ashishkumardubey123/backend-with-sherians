@@ -1,5 +1,4 @@
 // ! note:- use "bcrypt" insted of "bcryptjs"
-
 const express = require("express");
 const app = express();
 const userModel = require("./models//user");
@@ -7,14 +6,26 @@ const postModel = require("./models/post");
 const cookieParser = require("cookie-parser");
 var jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
+const path = require("path")
+const multerconfig = require('./config/multer');
+const upload = require("./config/multer");
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(express.static(path.join(__dirname, "public")))
 app.get("/", (req, res) => {
   res.render("index");
+});
+app.get("/profile/uploads", (req, res) => {
+  res.render("uploadfile");
+});
+app.post("/upload", isloggdIn, upload.single('image'), async (req, res) => {
+
+      let user= await  userModel.findOne({email: req.user.email})
+          user.profilepic = req.file.filename;
+        await user.save()
+         res.redirect('/profile')
 });
 
 app.post("/register", async (req, res) => {
@@ -29,7 +40,6 @@ app.post("/register", async (req, res) => {
       username,
       name,
       password: hash,
-
       email,
       age,
     });
@@ -78,16 +88,10 @@ app.get("/login", (req, res) => {
 
 app.get("/profile", isloggdIn, async (req, res) => {
   const user = await userModel.findOne({email: req.user.email}).populate("post")
-    
-
-  const randomImageId = Math.floor(Math.random() * 100);
-  const randomGender = Math.random() > 0.5 ? 'men' : 'women';
-
-  profileImage =`https://randomuser.me/api/portraits/${randomGender}/${randomImageId}.jpg`
-
-
    
-  res.render("profile", {user , profileImage});
+  console.log(user)
+
+  res.render("profile", {user});
 });
 
 

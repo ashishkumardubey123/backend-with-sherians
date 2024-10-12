@@ -10,8 +10,13 @@ mongoose.connect("mongodb+srv://ashish9039062705:s4YLItm4V3tNaheC@cluster0.hqot9
     password: String,
     post: [{
      type: mongoose.Schema.Types.ObjectId,
-     ref: 'post'
-   }]
+     ref: 'post', 
+   }],
+   profilepic:{
+    type: String,
+    default: "images.jpeg"
+
+   } 
  })
    
   module.exports= mongoose.model('user', userSchema)
